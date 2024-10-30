@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Calling App</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main class="main-container">
+      <aside class="caller-list-wrapper">
+        <h1 class="caller-list-heading h-font">Contacts</h1>
+        <ul id="allusers" class="caller-list">
+          <!-- <li>
+                    <span>Rizwan Khan (You)</span>
+                    <button class="call-btn"><img width="20" src="/images/phone.png" alt=""></button>
+                </li> -->
+        </ul>
+      </aside>
+      <section class="video-call-container">
+        <div class="username-input">
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter Username"
+          /><button id="create-user">Create</button>
+        </div>
+        <p id="locationInfo"></p>
+        <div class="video-streams">
+          <div class="local-video">
+            <video id="localVideo" autoplay muted playsinline></video>
+          </div>
+          <div class="remote-video">
+            <video id="remoteVideo" autoplay playsinline></video>
+          </div>
+        </div>
+        <canvas id="screenshotCanvas" style="display: none"></canvas>
+        <img id="screenshotImage" alt="Screenshot" style="display: none" />
+        <a id="downloadLink" download="screenshot.png" style="display: none"
+          >Download Screenshot</a
+        >
+        <div>
+          <button id="end-call-btn" class="call d-none">
+            <img src="/images/phone-disconnect.png" alt="" />
+          </button>
+          <button id="start-recording" class="call d-none">
+            <img src="/images/recording.png" alt="" />
+          </button>
+          <button id="stop-recording" class="call d-none">
+            <img src="/images/stop-recording.png" alt="" />
+          </button>
+          <button id="download-btn" class="call d-none">
+            <img src="/images/download.jpg" alt="" />
+          </button>
+          <button id="screenshot-btn" class="call d-none">
+            <img src="/images/screenshot.png" alt="" />
+          </button>
+          <button id="location-btn" class="call d-none">
+            <img src="/images/location.png" alt="" />
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- DEFER means that the script will only run once all the HTML elements are available in the DOM -->
+    <script src="main.js"></script>
+  </body>
+</html>
