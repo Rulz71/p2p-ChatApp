@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chat Room</title>
+        <style>
+            /* General styling */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .container {
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                width: 100%;
+                max-width: 600px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .video-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            video {
+                width: 600px;
+                height: 400px;
+                background: black;
+                border: 2px solid #ccc;
+                border-radius: 8px;
+            }
+
+            .control-panel {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 10px;
+                margin-top: 20px;
+                background: #ffffff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                width: fit-content;
+            }
+
+            .control-panel button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 0;
+            }
+
+            .control-panel img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Chat Room</h1>
+            <p id="locationInfo"></p>
+            <canvas id="screenshotCanvas" style="display: none"></canvas>
+            <img id="screenshotImage" alt="Screenshot" style="display: none" />
+            <a id="downloadLink" download="screenshot.png" style="display: none"
+                >Download Screenshot</a
+            >
+        </div>
+
+        <div class="video-container">
+            <video id="localVideo" autoplay muted></video>
+            <video id="remoteVideo" autoplay></video>
+        </div>
+
+        <div id="controlPanel" class="control-panel hidden">
+            <button id="endCallBtn" title="End Call">
+                <img src="/images/phone-disconnect.png" alt="End Call" />
+            </button>
+            <button id="shareLinkBtn" title="Share Link">
+                <img src="/images/share.png" alt="Share Link" />
+            </button>
+            <button id="recordBtn" title="Record">
+                <img src="/images/recording.png" alt="Record" />
+            </button>
+            <button id="screenshotBtn" title="Screenshot">
+                <img src="/images/screenshot.png" alt="Screenshot" />
+            </button>
+            <button id="locationBtn" title="Location">
+                <img src="/images/location.png" alt="Location" />
+            </button>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- DEFER means that the script will only run once all the HTML elements are available in the DOM -->
+        <script src="/js/client.js"></script>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Chat Room</title>
+    <style>
+        /* Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Chat Room</h1>
+    <form id="chatRoomForm">
+        <div>
+            <label for="roomIdIn">Room ID</label>
+            <input type="text" id="roomIdIn" placeholder="Enter a room ID" required>
+        </div>
+        <div>
+            <label for="userNameIn">Your Name</label>
+            <input type="text" id="userNameIn" placeholder="Enter your name" required>
+        </div>
+        <button type="button" id="joinBtn">Create Chat Room</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('joinBtn').onclick = () => {
+        const roomIdIn = document.getElementById('roomIdIn');
+        const userNameIn = document.getElementById('userNameIn');
+
+        if (roomIdIn.value && userNameIn.value) {
+            const joinURL = 'chatRoom.html?room=' + encodeURIComponent(roomIdIn.value) + '&name=' + encodeURIComponent(userNameIn.value) + '&agent=true';
+            window.location.href = joinURL; // Navigate to chatRoom.html with query parameters
+        } else {
+            alert('Please enter both Room ID and Your Name');
+        }
+    };
+</script>
+
+</body>
+</html>
